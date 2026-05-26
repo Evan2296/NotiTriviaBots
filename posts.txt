@@ -15,4 +15,23 @@ https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
 5. I made this app originally because I worked in an environment where I really can't use my phone, but I go to bars each Tuesday for trivia and really enjoy. It sends out a question at noon and 6pm, and you answer the question in the notifications that it sends you so you can very quickly just look, think and answer. To make it a bit more user friendly I only included multiple choice and binary answer choice questions. I hope you enjoy it you do download it.
 https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
 
-6.
+6. I love doing trivia and go to bars a lot to do bar trivia. Wanted something that could give me some sort of trivia fix more often than going out each Tuesday. Made an Apple Watch app called Noti Trivia: https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+it kinda sucks and I get that so if you dont download, nothing wrong with that. I like it, it sends out 2 questions each day to your watch, you can answer them in the notification screen so you're really only interacting with it for like 2 minutes each day max while still testing your knowledge. The questions dateset needs work but I enjoy it enough to share it here. Just made this for the enjoyment of it but now thats its on the App Store im faced with the reality of getting this out to people to see. Enjoy it if you download, and dm me if you want to let me know. Who will be my second download? I just want people to try it out and tell me what they think.
+
+7. Game Title: NotiTrivia
+
+Playable Link: https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+
+Platform: Apple Watch (watchOS)
+
+Description: NotiTrivia is a trivia app built exclusively for Apple Watch that delivers 2 questions per day directly to your wrist as push notifications. The whole experience lives in the notification itself — multiple choice and true/false questions show up with tappable answer buttons, so you never have to open the app. Answer correctly and your streak grows. Get it wrong or miss the 1 hour window and you lose a life. Lose all 3 lives and your streak resets. Questions rotate through a dataset of 14,000+ across a wide range of categories. The whole thing takes maybe 2 minutes of your day max. No account needed, no personal data collected.
+
+Free to Play Status:
+
+ Free to play
+Involvement: Solo developer. Designed, built, and shipped the entire app over about 2 months. First project I've ever shipped.
+
+8. I love doing trivia and go to bars a lot to do bar trivia. Wanted something that could give me some sort of trivia fix more often than going out each Tuesday. Made an Apple Watch app called Noti Trivia: https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+it kinda sucks and I get that so if you dont download, nothing wrong with that. I like it, it sends out 2 questions each day to your watch, you can answer them in the notification screen so you're really only interacting with it for like 2 minutes each day max while still testing your knowledge. The questions dateset needs work but I enjoy it enough to share it here. Just made this for the enjoyment of it but now thats its on the App Store im faced with the reality of getting this out to people to see. Enjoy it if you download, and dm me if you want to let me know. Who will be my first download?
+
+9. 
