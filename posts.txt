@@ -1,0 +1,18 @@
+1. I built a free Apple Watch app that sends you 2 trivia questions a day directly to your wrist as push notifications. You answer right in the notification with tappable buttons, never have to open the app. There's a streak system and 3 lives keeping you honest, 14,000+ questions across a ton of categories, all multiple choice and true/false. Takes 2 minutes of your day max. No account, no data collected, nothing sketchy. Just shipped it and would love for people to give it a shot.
+https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+notitrivia.online
+
+2. Just shipped my first app a bit days ago and trying to figure out how to actually get eyes on it. For anyone who has gone through this before, how did you get your first real wave of downloads? Did organic Reddit posting actually move the needle or was it mostly a waste of time? Curious if anyone found a channel that actually worked early on. Spent a lot of time making the landing page, though I'm not an artist nor do I have the funds to pay for a real artist unfortunately so I used ai to render the app Home Screen onto the watch. I really like it fundamentally and built it purely for me to begin with, but I am trying to learn what it takes to get something out there in the sea of it all.
+For context the app is a watchOS trivia thing I built, sends 2 questions a day to your Apple Watch as notifications and you answer right from the notification.
+notitrivia.online
+https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+
+3.Alright I get it, it's not that good, but thats okay. It was just made for me to get trivia on my watch since I couldn't use my phone often at work. I like getting the trivia fix and learning something everyday. It sends out 2 questions per day, noon and 6pm, and you're able to answer it in the notification so you really only have to interact with the app for like 20 seconds each day. You have 3 lives and can build a streak with correct answers. Just meant to be fun and have as little interaction as possible. Didn't want a heavy app or something where I have to really use the Apple Watch to enjoy it. Apple Watch only, try it out:  
+https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+
+4. I made a little WatchOS app that sends me 2 questions per day from a set list of questions that I pulled from lots of bar trivia databases and such and then created multiple choice options out of all of them so I could answer the trivia on my watch at work. If you want to try it out feel free to DM me, I found it to be really fun and engaging and if you like trivia I think you'll like it too.
+
+5. I made this app originally because I worked in an environment where I really can't use my phone, but I go to bars each Tuesday for trivia and really enjoy. It sends out a question at noon and 6pm, and you answer the question in the notifications that it sends you so you can very quickly just look, think and answer. To make it a bit more user friendly I only included multiple choice and binary answer choice questions. I hope you enjoy it you do download it.
+https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+
+6.
