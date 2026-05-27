@@ -1,3 +1,18 @@
+VALID SUBREDDITS TO POST TO
+===========================
+r/IMadeThis - https://reddit.com/r/IMadeThis
+r/alphaandbetausers - https://reddit.com/r/alphaandbetausers
+r/roastmyapp - https://reddit.com/r/roastmyapp
+r/buildinpublic - https://reddit.com/r/buildinpublic
+r/playmygame - https://reddit.com/r/playmygame
+r/AppleWatchApps - https://reddit.com/r/AppleWatchApps
+r/wordgames - https://reddit.com/r/wordgames
+r/braintraining - https://reddit.com/r/braintraining
+r/SaaS - https://reddit.com/r/SaaS
+r/puzzles - https://reddit.com/r/puzzles
+r/difficultTrivia - https://reddit.com/r/DifficultTrivia
+===========================
+
 1. I built a free Apple Watch app that sends you 2 trivia questions a day directly to your wrist as push notifications. You answer right in the notification with tappable buttons, never have to open the app. There's a streak system and 3 lives keeping you honest, 14,000+ questions across a ton of categories, all multiple choice and true/false. Takes 2 minutes of your day max. No account, no data collected, nothing sketchy. Just shipped it and would love for people to give it a shot.
 https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
 notitrivia.online
