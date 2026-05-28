@@ -71,3 +71,10 @@ notitrivia.online
 Curious if anyone has built or used something that was intentionally designed to be as low friction and low engagement as possible and whether that ended up being a feature or a problem in terms of how people received it.
 https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
 notitrivia.online
+
+14. There's a piece of advice that gets thrown around constantly in the startup and indie dev world that goes something like "listen to your users, they know what they want better than you do." And on the surface that sounds right. Getting feedback early, iterating based on real input, not building in a vacuum. All valid. But I think there's a version of that advice that if you take it too literally will actually kill something good before it has a chance to breathe.
+The thing nobody really talks about is that users are really good at telling you what they don't like about something that already exists, and really bad at imagining something that doesn't exist yet. If you had asked people before the iPhone what they wanted in a phone they would have said a better keyboard or longer battery life. They wouldn't have said get rid of the keyboard entirely. The vision has to come from somewhere internal first, and then the feedback layer gets applied on top of that. Not the other way around.
+I built something recently that got a decent amount of "this needs more content" and "why can't I just open the app" type feedback early on. And I understood where it was coming from. But the whole point was that you don't open it. The friction being gone was the feature. I trusted that if I kept it exactly as minimal as I intended, the right people would get it.
+The image below is the only proof I need that the vision was right.
+https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch
+notitrivia.online
