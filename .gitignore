@@ -1,0 +1,18 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Auth & session data — never commit these
+reddit_auth.json
+
+# Runtime logs — machine-specific
+post_log.json
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
