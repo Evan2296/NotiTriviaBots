@@ -9,7 +9,6 @@ __pycache__/
 reddit_auth.json
 
 # Runtime logs — machine-specific
-post_log.json
 
 # macOS
 .DS_Store
