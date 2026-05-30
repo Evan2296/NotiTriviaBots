@@ -227,19 +227,31 @@ def post_to_reddit(page, subreddit: str, title: str, body: str) -> tuple[bool, s
         return False, ""
 
 
-def run_cycles(page, data: dict, csv_rows: list[dict]) -> None:
+def run_all_subreddits(page, data: dict, csv_rows: list[dict]) -> None:
+    """Post once to every subreddit in the list, in shuffled order."""
     posted_keys = get_posted_keys(csv_rows)
     category_map = get_category_map(csv_rows)
 
-    successful = 0
-    cycle = 1
+    subreddits = list(data["subreddits"])
+    random.shuffle(subreddits)
+    posts = data["posts"]
 
-    while successful < NUM_CYCLES:
+    total = len(subreddits)
+    successful = 0
+
+    for idx, subreddit in enumerate(subreddits, start=1):
         log(f"\n{'═'*62}")
-        log(f"  CYCLE {cycle}  |  {successful}/{NUM_CYCLES} successful so far")
+        log(f"  SUBREDDIT {idx}/{total}  |  {successful} successful so far")
         log(f"{'═'*62}")
 
-        subreddit, post, title = pick_combination(data, posted_keys)
+        # Pick a fresh post for this subreddit
+        fresh_posts = [p for p in posts if (subreddit, str(p["id"])) not in posted_keys]
+        if fresh_posts:
+            post = random.choice(fresh_posts)
+        else:
+            post = random.choice(posts)
+
+        title = random.choice(post["titles"])
 
         log(f"  Subreddit : {subreddit}")
         log(f"  Title     : {title}")
@@ -262,25 +274,21 @@ def run_cycles(page, data: dict, csv_rows: list[dict]) -> None:
             }
             append_csv_row(new_row)
 
-            # Keep in-memory state current so we don't repeat in this session
             posted_keys.add((subreddit, str(post["id"])))
-
             successful += 1
-            log(f"  ✅ Post {successful}/{NUM_CYCLES} logged to {CSV_FILE}")
+            log(f"  ✅ Posted successfully ({successful} total). Logged to {CSV_FILE}")
             log(f"     [{timestamp}] → {subreddit}")
             if reddit_post_url:
                 log(f"     Post URL: {reddit_post_url}")
         else:
-            log("  ⚠️  Post failed or could not be confirmed. Moving to next cycle.")
+            log("  ⚠️  Post failed or could not be confirmed. Moving to next subreddit.")
 
-        cycle += 1
-
-        if successful < NUM_CYCLES:
-            log("\n  Waiting before next cycle...")
+        if idx < total:
+            log("\n  Waiting before next subreddit...")
             random_delay()
 
     log(f"\n{'═'*62}")
-    log(f"  🎉 Done! {successful}/{NUM_CYCLES} posts completed.")
+    log(f"  🎉 Done! {successful}/{total} subreddits posted successfully.")
     log(f"  Full history saved in: {CSV_FILE}")
     log(f"{'═'*62}")
 
@@ -370,7 +378,7 @@ def main():
         random_delay(2, 4)
 
         log("Starting posting cycles...\n")
-        run_cycles(page, data, csv_rows)
+        run_all_subreddits(page, data, csv_rows)
 
         log("Script complete. Browser left open.")
 
