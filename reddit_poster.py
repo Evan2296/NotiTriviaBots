@@ -46,6 +46,22 @@ FLAIR_PREFERRED_KEYWORDS = [
     "general", "other", "ios", "question", "discussion",
     "app", "show", "showcase", "project", "share", "feedback",
 ]
+
+# ── Temporary one-run skip list ───────────────────────────────────────────────
+# These subs were already posted to in the previous session today.
+# Remove this set (or empty it) once you want to include them again.
+SKIP_THIS_RUN = {
+    "https://reddit.com/r/startup_ideas",
+    "https://reddit.com/r/appdev",
+    "https://reddit.com/r/appideas",
+    "https://reddit.com/r/roastmyapp",
+    "https://reddit.com/r/vibecodingsaas",
+    "https://reddit.com/r/startupsolofounder",
+    "https://reddit.com/r/promotemyapp",
+    "https://reddit.com/r/appswebappsfullstack",
+    "https://reddit.com/r/buildinpublic",
+    "https://reddit.com/r/vibecoding",
+}
 # ─────────────────────────────────────────────────────────────────────────────
 
 
@@ -140,46 +156,74 @@ def pick_combination(data: dict, posted_keys: set) -> tuple:
 
 def _pick_and_confirm_option(page, field_label: str) -> bool:
     """
-    After a picker/dropdown has been opened, find all available options,
-    prefer keywords from FLAIR_PREFERRED_KEYWORDS, fall back to random,
-    click the choice, and try to confirm with an Apply/Save button.
+    After the flair/tag picker has been opened:
+      1. Click 'View all flairs' if that button exists (new Reddit UI).
+      2. Read all faceplate-radio-input flair options (new Reddit UI).
+      3. Fall back to legacy selectors if none found.
+      4. Select preferred keyword match (FLAIR_PREFERRED_KEYWORDS), else random.
+      5. Confirm with Apply/Save/Done button.
     Returns True if an option was selected, False if nothing was found.
     """
-    # Selectors to find picker items — covers flair buttons, tag lists,
-    # role-based menus, and generic dialog buttons.
-    option_selectors = [
-        'button[id^="flair-button-"]',
-        '[data-testid="flair-option"]',
-        'shreddit-flair-button',
-        '.flair-selection-list button',
-        '[id^="post-flair-"] button',
-        '[role="listbox"] [role="option"]',
-        '[role="dialog"] li[role="option"]',
-        '[role="menu"] [role="menuitem"]',
-        'button[class*="flair"]',
-        'button[class*="tag"]',
-        '[data-testid="tag-option"]',
-    ]
 
+    # ── Step 1: Click "View all flairs" if present ────────────────────────
+    try:
+        view_all = page.locator("#view-all-flairs-button")
+        if view_all.count() > 0:
+            log("    → Clicking 'View all flairs'...")
+            view_all.first.click()
+            random_delay(1.0, 2.0)
+    except Exception:
+        pass
+
+    # ── Step 2: Try faceplate-radio-input (new Reddit flair UI) ──────────
     options_with_text: list[tuple[str, object]] = []
-    for sel in option_selectors:
-        try:
-            page.wait_for_selector(sel, timeout=4_000)
-            found = page.locator(sel).all()
-            if found:
-                for opt in found:
-                    try:
-                        txt = opt.inner_text().strip()
-                        # Sanity-check: skip empty or suspiciously long strings
-                        if txt and len(txt) < 80:
-                            options_with_text.append((txt.lower(), opt))
-                    except Exception:
-                        pass
-                if options_with_text:
-                    log(f"    Found {len(options_with_text)} option(s) via '{sel}'.")
-                    break
-        except PlaywrightTimeoutError:
-            continue
+    try:
+        page.wait_for_selector("faceplate-radio-input", timeout=5_000)
+        faceplate_opts = page.locator("faceplate-radio-input").all()
+        for opt in faceplate_opts:
+            try:
+                txt = opt.inner_text().strip()
+                if txt and len(txt) < 80:
+                    options_with_text.append((txt.lower(), opt))
+            except Exception:
+                pass
+        if options_with_text:
+            log(f"    Found {len(options_with_text)} faceplate flair option(s).")
+    except PlaywrightTimeoutError:
+        pass
+
+    # ── Step 3: Fall back to legacy selectors ────────────────────────────
+    if not options_with_text:
+        legacy_selectors = [
+            'button[id^="flair-button-"]',
+            '[data-testid="flair-option"]',
+            'shreddit-flair-button',
+            '.flair-selection-list button',
+            '[id^="post-flair-"] button',
+            '[role="listbox"] [role="option"]',
+            '[role="dialog"] li[role="option"]',
+            '[role="menu"] [role="menuitem"]',
+            'button[class*="flair"]',
+            'button[class*="tag"]',
+            '[data-testid="tag-option"]',
+        ]
+        for sel in legacy_selectors:
+            try:
+                page.wait_for_selector(sel, timeout=4_000)
+                found = page.locator(sel).all()
+                if found:
+                    for opt in found:
+                        try:
+                            txt = opt.inner_text().strip()
+                            if txt and len(txt) < 80:
+                                options_with_text.append((txt.lower(), opt))
+                        except Exception:
+                            pass
+                    if options_with_text:
+                        log(f"    Found {len(options_with_text)} option(s) via legacy selector '{sel}'.")
+                        break
+            except PlaywrightTimeoutError:
+                continue
 
     if not options_with_text:
         log(f"    ❌ No picker options found for '{field_label}'.")
@@ -187,7 +231,7 @@ def _pick_and_confirm_option(page, field_label: str) -> bool:
 
     log(f"    Options: {[t for t, _ in options_with_text[:12]]}")
 
-    # Prefer keyword match, else random
+    # ── Step 4: Prefer keyword match, else random ─────────────────────────
     chosen_elem = None
     chosen_label = ""
     for keyword in FLAIR_PREFERRED_KEYWORDS:
@@ -208,7 +252,7 @@ def _pick_and_confirm_option(page, field_label: str) -> bool:
     chosen_elem.click()
     random_delay(0.5, 1.0)
 
-    # Try to confirm / apply the selection
+    # ── Step 5: Confirm / apply the selection ─────────────────────────────
     apply_selectors = [
         '#flair-apply-button',
         'button[id="flair-apply-button"]',
@@ -247,7 +291,40 @@ def handle_required_extras(page) -> bool:
     try:
         # Find every button on the page that contains a required indicator.
         # Using :has() so we match the button, not just the span inside it.
-        required_btns = page.locator("button:has(.text-danger-content)").all()
+        all_danger_btns = page.locator("button:has(.text-danger-content)").all()
+
+        # Filter out the title field's own danger indicator — we already filled
+        # the title, but Reddit sometimes leaves its asterisk visible.  We detect
+        # this by checking the button's id / aria-label for the word "title", or
+        # by seeing whether the button's visible text matches the filled title.
+        title_value = ""
+        try:
+            title_field = page.locator('textarea[name="title"]')
+            if title_field.count() > 0:
+                title_value = (title_field.input_value() or "").strip().lower()
+        except Exception:
+            pass
+
+        required_btns = []
+        for btn in all_danger_btns:
+            try:
+                btn_id   = (btn.get_attribute("id") or "").lower()
+                btn_aria = (btn.get_attribute("aria-label") or "").lower()
+                btn_text = btn.inner_text().strip()
+
+                # Skip if the button is clearly the title-field indicator
+                if "title" in btn_id or "title" in btn_aria:
+                    log(f"    ℹ️  Skipping title-field danger indicator [id={btn_id}].")
+                    continue
+
+                # Skip if the button's visible text matches the filled title content
+                if title_value and btn_text.lower() == title_value:
+                    log(f"    ℹ️  Skipping button whose text matches filled title.")
+                    continue
+
+                required_btns.append(btn)
+            except Exception:
+                required_btns.append(btn)
 
         if not required_btns:
             log("    ℹ️  No required extras detected — nothing extra to fill.")
@@ -406,7 +483,9 @@ def run_all_subreddits(page, data: dict, csv_rows: list[dict]) -> None:
     posted_keys = get_posted_keys(csv_rows)
     category_map = get_category_map(csv_rows)
 
-    subreddits = list(data["subreddits"])
+    subreddits = [s for s in data["subreddits"] if s not in SKIP_THIS_RUN]
+    if SKIP_THIS_RUN:
+        log(f"  ⏭️  Skipping {len(SKIP_THIS_RUN)} subreddit(s) this run (SKIP_THIS_RUN).")
     random.shuffle(subreddits)
     posts = data["posts"]
 
