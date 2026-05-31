@@ -39,6 +39,13 @@ SEL_CREATE_POST = '[data-testid="create-post"]'
 SEL_TITLE       = 'textarea[name="title"]'
 SEL_BODY        = '[aria-label="Post body text field"][data-lexical-editor="true"]'
 SEL_SUBMIT      = "#inner-post-submit-button"
+SEL_FLAIR_BTN   = "#reddit-post-flair-button"
+
+# Flair keyword preferences (checked in order; first match wins)
+FLAIR_PREFERRED_KEYWORDS = [
+    "general", "other", "ios", "question", "discussion",
+    "app", "show", "showcase", "project", "share", "feedback",
+]
 # ─────────────────────────────────────────────────────────────────────────────
 
 
@@ -131,6 +138,166 @@ def pick_combination(data: dict, posted_keys: set) -> tuple:
     return subreddit, post, title
 
 
+def _pick_and_confirm_option(page, field_label: str) -> bool:
+    """
+    After a picker/dropdown has been opened, find all available options,
+    prefer keywords from FLAIR_PREFERRED_KEYWORDS, fall back to random,
+    click the choice, and try to confirm with an Apply/Save button.
+    Returns True if an option was selected, False if nothing was found.
+    """
+    # Selectors to find picker items — covers flair buttons, tag lists,
+    # role-based menus, and generic dialog buttons.
+    option_selectors = [
+        'button[id^="flair-button-"]',
+        '[data-testid="flair-option"]',
+        'shreddit-flair-button',
+        '.flair-selection-list button',
+        '[id^="post-flair-"] button',
+        '[role="listbox"] [role="option"]',
+        '[role="dialog"] li[role="option"]',
+        '[role="menu"] [role="menuitem"]',
+        'button[class*="flair"]',
+        'button[class*="tag"]',
+        '[data-testid="tag-option"]',
+    ]
+
+    options_with_text: list[tuple[str, object]] = []
+    for sel in option_selectors:
+        try:
+            page.wait_for_selector(sel, timeout=4_000)
+            found = page.locator(sel).all()
+            if found:
+                for opt in found:
+                    try:
+                        txt = opt.inner_text().strip()
+                        # Sanity-check: skip empty or suspiciously long strings
+                        if txt and len(txt) < 80:
+                            options_with_text.append((txt.lower(), opt))
+                    except Exception:
+                        pass
+                if options_with_text:
+                    log(f"    Found {len(options_with_text)} option(s) via '{sel}'.")
+                    break
+        except PlaywrightTimeoutError:
+            continue
+
+    if not options_with_text:
+        log(f"    ❌ No picker options found for '{field_label}'.")
+        return False
+
+    log(f"    Options: {[t for t, _ in options_with_text[:12]]}")
+
+    # Prefer keyword match, else random
+    chosen_elem = None
+    chosen_label = ""
+    for keyword in FLAIR_PREFERRED_KEYWORDS:
+        for txt, elem in options_with_text:
+            if keyword in txt:
+                chosen_elem = elem
+                chosen_label = txt
+                break
+        if chosen_elem:
+            break
+
+    if chosen_elem:
+        log(f"    Keyword match → selecting: '{chosen_label}'")
+    else:
+        chosen_label, chosen_elem = random.choice(options_with_text)
+        log(f"    No keyword match — random pick: '{chosen_label}'")
+
+    chosen_elem.click()
+    random_delay(0.5, 1.0)
+
+    # Try to confirm / apply the selection
+    apply_selectors = [
+        '#flair-apply-button',
+        'button[id="flair-apply-button"]',
+        'button:has-text("Apply")',
+        'button:has-text("Save")',
+        'button:has-text("Done")',
+        '[data-testid="flair-apply"]',
+    ]
+    for sel in apply_selectors:
+        try:
+            btn = page.locator(sel)
+            if btn.count() > 0:
+                btn.first.click()
+                log(f"    Selection confirmed via '{sel}'.")
+                break
+        except Exception:
+            pass
+
+    random_delay(0.5, 1.0)
+    return True
+
+
+def handle_required_extras(page) -> bool:
+    """
+    After filling title + body, scan the page for any remaining required
+    fields indicated by buttons that contain a .text-danger-content child
+    (the red asterisk Reddit uses for mandatory inputs).
+
+    We always fill title and body — so any danger-content found on a *button*
+    belongs to something else (flair, tag, post type, etc.) that we still need
+    to handle.  Works generically for both flair pickers and tag selectors.
+
+    Returns True if all required extras were handled (or none existed).
+    Returns False only if a required field was found but we couldn't fill it.
+    """
+    try:
+        # Find every button on the page that contains a required indicator.
+        # Using :has() so we match the button, not just the span inside it.
+        required_btns = page.locator("button:has(.text-danger-content)").all()
+
+        if not required_btns:
+            log("    ℹ️  No required extras detected — nothing extra to fill.")
+            return True
+
+        log(f"    ⚠️  {len(required_btns)} required extra field(s) found. Handling...")
+
+        all_ok = True
+        for i, btn in enumerate(required_btns, start=1):
+            try:
+                btn_text  = btn.inner_text().strip().replace("\n", " ")
+                btn_id    = btn.get_attribute("id") or "(no id)"
+                log(f"    → Field {i}: '{btn_text[:60]}' [id={btn_id}]")
+
+                btn.scroll_into_view_if_needed()
+                btn.click()
+                random_delay(1.0, 2.0)
+
+                ok = _pick_and_confirm_option(page, btn_text[:40])
+                if not ok:
+                    log(f"    ❌ Could not fill required field {i} — will try pressing Escape and continue.")
+                    try:
+                        page.keyboard.press("Escape")
+                        random_delay(0.5, 1.0)
+                    except Exception:
+                        pass
+                    all_ok = False
+
+            except Exception as e:
+                log(f"    ❌ Error on required field {i}: {e}")
+                try:
+                    page.keyboard.press("Escape")
+                    random_delay(0.5, 1.0)
+                except Exception:
+                    pass
+                all_ok = False
+
+        if all_ok:
+            log("    ✅ All required extras handled successfully.")
+        else:
+            log("    ⚠️  One or more required extras could not be filled — post may still go through.")
+
+        return all_ok
+
+    except Exception as e:
+        log(f"    ❌ handle_required_extras error: {e}")
+        log(traceback.format_exc())
+        return False
+
+
 def post_to_reddit(page, subreddit: str, title: str, body: str) -> tuple[bool, str]:
     """
     Attempt to post to the given subreddit.
@@ -194,6 +361,13 @@ def post_to_reddit(page, subreddit: str, title: str, body: str) -> tuple[bool, s
             log("    ❌ Body field not found after 15s.")
             return False, ""
         random_delay(2, 4)
+
+        # ── Handle required extras: flair, tags, etc. ─────────────────────
+        log("  → Checking for required flair/tags/extras...")
+        extras_ok = handle_required_extras(page)
+        if not extras_ok:
+            log("    ❌ A required field could not be filled. Skipping post.")
+            return False, ""
 
         # ── Submit ─────────────────────────────────────────────────────────
         log(f"  → Looking for submit button ({SEL_SUBMIT})...")
