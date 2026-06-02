@@ -497,12 +497,20 @@ def run_all_subreddits(page, data: dict, csv_rows: list[dict]) -> None:
         log(f"  SUBREDDIT {idx}/{total}  |  {successful} successful so far")
         log(f"{'═'*62}")
 
-        # Pick a fresh post for this subreddit
-        fresh_posts = [p for p in posts if (subreddit, str(p["id"])) not in posted_keys]
+        # Respect subreddit_post_restrictions if defined
+        restrictions = data.get("subreddit_post_restrictions", {})
+        allowed_ids = restrictions.get(subreddit)
+        if allowed_ids is not None:
+            allowed_posts = [p for p in posts if p["id"] in allowed_ids]
+        else:
+            allowed_posts = posts
+
+        # Pick a fresh post for this subreddit (within allowed set)
+        fresh_posts = [p for p in allowed_posts if (subreddit, str(p["id"])) not in posted_keys]
         if fresh_posts:
             post = random.choice(fresh_posts)
         else:
-            post = random.choice(posts)
+            post = random.choice(allowed_posts)
 
         title = random.choice(post["titles"])
 

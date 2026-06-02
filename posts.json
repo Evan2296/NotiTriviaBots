@@ -23,8 +23,12 @@
     "https://reddit.com/r/showmeyourapps",
     "https://reddit.com/r/appdev",
     "https://reddit.com/r/feedbackqueue",
-    "https://reddit.com/r/founder"
+    "https://reddit.com/r/founder",
+    "https://reddit.com/r/playmygame"
   ],
+  "subreddit_post_restrictions": {
+    "https://reddit.com/r/playmygame": [7]
+  },
   "posts": [
     {
       "id": 1,
@@ -58,7 +62,7 @@
     },
     {
       "id": 3,
-      "body": "Alright I get it, it's not that good, but thats okay. It was just made for me to get trivia on my watch since I couldn't use my phone often at work. I like getting the trivia fix and learning something everyday. It sends out 2 questions per day, noon and 6pm, and you're able to answer it in the notification so you really only have to interact with the app for like 20 seconds each day. You have 3 lives and can build a streak with correct answers. Just meant to be fun and have as little interaction as possible. Didn't want a heavy app or something where I have to really use the Apple Watch to enjoy it. Apple Watch only, try it out:\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "body": "Alright I get it, it's not that good, but thats okay. It was just made for me to get trivia on my watch since I couldn't use my phone often at work. I like getting the trivia fix and learning something everyday. It sends out a question at noon and 6pm, and you're able to answer it in the notification so you really only have to interact with the app for like 20 seconds each day. You have 3 lives and can build a streak with correct answers. Just meant to be fun and have as little interaction as possible. Didn't want a heavy app or something where I have to really use the Apple Watch to enjoy it. Apple Watch only, try it out:\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
       "links": {
         "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
         "website": "https://notitrivia.online"
@@ -234,6 +238,171 @@
         "Sometimes the user feedback is just wrong, and that's okay",
         "Built something minimal, people said add more, I didn't",
         "The product vision has to come first, then comes the feedback"
+      ]
+    },
+    {
+      "id": 15,
+      "body": "Alright I want to run a little experiment. Download Noti Trivia on your Apple Watch, use it for a week, and then DM me. Not for feedback necessarily, just to tell me what you actually thought of it. Good, bad, whatever. I built the whole thing solo over two months and I want to hear from real people who actually tried it, not just download numbers in a dashboard.\nThe app sends 2 trivia questions a day as notifications directly to your wrist, you answer with tappable buttons right in the notification, never have to open anything. Streak system, 3 lives, 14,000+ questions across a bunch of categories. It takes under 2 minutes of your day at most. Completely free, no account needed.\nDownload it here: https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nI genuinely want to hear from you after you've used it. DM me once you've given it a real shot.\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Download my watch app for a week and DM me what you think",
+        "Challenge: use this Apple Watch trivia app and report back",
+        "I want real human opinions, not download numbers — try this",
+        "Try Noti Trivia for 7 days and slide into my DMs",
+        "Download it, use it for a week, then come talk to me"
+      ]
+    },
+    {
+      "id": 16,
+      "body": "Here's a challenge for the trivia people in this community. Download Noti Trivia — it's a free Apple Watch app that sends you 2 questions a day as notifications — and try to keep a streak going for 30 days without losing all 3 lives. You get one question at noon and one at 6pm. Answer in the notification, done in 20 seconds. Mess up or miss the 1-hour answer window and you lose a life. Lose all 3 and your streak resets.\nIf you hit 30 days clean, DM me. I want to know who actually made it and I'll shout you out. 14,000+ questions across science, history, geography, pop culture, sports, and more. No account needed, totally free.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nWho's actually going to try this?\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "30-day streak challenge on my Apple Watch trivia app",
+        "Can you go 30 days without losing all your lives? Try it",
+        "DM me if you hit a 30-day streak — most people won't make it",
+        "The 30-day Noti Trivia streak challenge starts now",
+        "Free Apple Watch trivia app — I dare you to keep the streak"
+      ]
+    },
+    {
+      "id": 17,
+      "body": "Out of 14,000+ trivia questions sitting in the Noti Trivia dataset, the categories that people miss the most consistently are not what you'd expect. Science and nature questions have the highest wrong-answer rate across the board. Not advanced stuff either — fairly accessible questions about biology, physics, the natural world. People are confident going in and wrong coming out.\nGeography is second. Not capitals or countries, but anything that requires knowing relative size, region, or physical geography. People pattern-match to the big landmarks and miss the details.\nHistory surprises the other direction. Most people do better on history than they think they will going in, probably because it's the category closest to what gets covered in school.\nSports is the most polarizing by far. Some people ace every question, others haven't gotten a single one right. It's basically bimodal — you either know sports or you don't, there's no middle.\nAll of this lives in a free Apple Watch trivia app that sends you 2 questions a day as wrist notifications. If you want to test yourself across all of these:\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "The trivia categories people are worst at might surprise you",
+        "Science questions have the highest miss rate in my dataset",
+        "Data from 14,000+ trivia questions — here's what people get wrong",
+        "Sports trivia is completely bimodal, you either get it or you don't",
+        "Which trivia category trips people up the most? Here's the data"
+      ]
+    },
+    {
+      "id": 18,
+      "body": "Something I didn't anticipate when building Noti Trivia was how much the 1-hour answer window would change user behavior. The app sends 2 trivia questions a day to your Apple Watch as push notifications — one at noon, one at 6pm — and if you don't answer within an hour, you lose a life.\nWhat I found is that the time pressure is actually the thing people respond to most. Not the streak, not the question itself — the window. It creates urgency in a way that a persistent notification never would. You see it, you feel the pull, and you answer. The whole interaction is done in under 20 seconds.\nThe flip side of that is the drop-off pattern. The noon question gets answered at a much higher rate than the 6pm one. People are more distracted in the evening, or already off the watch, or just more checked out. The differential is significant enough that I've been thinking about whether the 6pm time is the right default or if it should be adjustable.\nFor context this is a free solo-built watchOS app with a 14,000+ question bank. No account, no data collected, just daily trivia on your wrist.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "The 1-hour answer window changed everything about how people use it",
+        "Noon vs 6pm: which notification time actually gets answered?",
+        "Time pressure is the feature, not the streak",
+        "The behavioral data from a 2-question-a-day trivia app",
+        "What I learned from watching when people answer trivia on their watch"
+      ]
+    },
+    {
+      "id": 19,
+      "body": "Building push notifications for watchOS is way more annoying than the Apple documentation makes it look, and I don't think enough people write about the specifics when they run into the wall.\nThe core problem: watchOS doesn't have its own independent push channel the way iOS does. You can't just register a watch app for remote notifications and call it done. What actually happens is the notification is delivered to the paired iPhone first, and then the system decides whether to forward it to the watch — based on whether the phone is unlocked, whether the watch is on wrist, whether the user has done anything recently on either device. You have no direct control over that routing logic.\nThe way around it (and what I eventually implemented for Noti Trivia) is to send notifications to the iOS companion app and rely on the system's watch mirroring behavior. This works reliably enough, but it means your notification experience on the watch is entirely at the mercy of Apple's routing heuristics, which are not documented in any useful detail.\nI also ran into issues with notification categories and action buttons. Getting tappable answer buttons to appear in the watch notification — which is the whole point of the app since you answer trivia right in the notification — required some trial and error with UNNotificationAction and making sure the category identifiers were registered properly in the watch extension context.\nBuilding this whole thing solo for the first time, it took longer than I expected to get the notification side feeling reliable. Happy to go deeper on any of this if anyone's working on something similar.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Push notifications on watchOS are way more annoying than they look",
+        "How I got tappable answer buttons working in Apple Watch notifications",
+        "The undocumented side of watchOS push notification routing",
+        "WatchOS push notifications: what Apple's docs don't tell you",
+        "Deep dive: getting reliable push notifications into a watchOS app"
+      ]
+    },
+    {
+      "id": 20,
+      "body": "I want to share something I ran into when building Noti Trivia that I genuinely didn't see coming: the Apple Watch extension model is effectively deprecated and Apple wants you on the newer SwiftUI-native watchOS app architecture, but the documentation for the old way still shows up first in basically every search result and a lot of community answers are written for the old model.\nWhen I first started the project I was building against the WKExtensionDelegate pattern, which is the older watchOS extension approach. Somewhere mid-build I realized that what I actually needed for the notification interaction model to work the way I wanted was the newer independent watchOS app structure where the watch app is its own SwiftUI app target rather than an extension hanging off the iPhone app.\nThe migration wasn't brutal but it wasn't smooth either. The way lifecycle events are handled is different, the way you configure background modes is different, and a few things that worked in the extension model just stopped working or needed to be completely rethought.\nIf you're starting a watchOS project today, start with the independent app model. Ignore most StackOverflow answers from before 2022. Read the WWDC sessions on watchOS app architecture instead, they're actually pretty clear once you know what you're looking for.\nBuilt this solo over about 2 months. Free Apple Watch trivia app, 2 questions a day, answer in the notification.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "The watchOS extension model is deprecated and nobody told me",
+        "Stop building watchOS apps the old way — here's what changed",
+        "Migrating from WKExtensionDelegate to the new watchOS app model",
+        "What I wish I knew before starting my first watchOS project",
+        "The outdated watchOS docs that cost me weeks of build time"
+      ]
+    },
+    {
+      "id": 21,
+      "body": "If you're the kind of person who has opinions about which category they're weakest in at pub quiz, this is for you.\nI built Noti Trivia for Apple Watch because I do bar trivia every Tuesday and I wanted something that kept my brain in the game the other six days of the week. Not a full trivia game I have to sit down with, just a couple of quick questions to keep the synapses firing. Two questions a day, delivered as push notifications to your wrist at noon and 6pm. You answer in the notification itself with tappable buttons, takes about 20 seconds. Streak system, 3 lives, and a question bank of 14,000+ covering science, history, geography, pop culture, sports, and a bunch more.\nIt's free, no account needed, no data collected. If your Tuesday night team could use you being a little sharper on Wednesday through Monday, this is worth a download.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Built for trivia people who want to stay sharp between sessions",
+        "For the pub quiz regulars who want reps the other six days",
+        "A trivia nerd built a watch app for other trivia nerds",
+        "Keep your trivia brain warm every single day, not just Tuesday",
+        "14,000+ questions to make you a better bar trivia teammate"
+      ]
+    },
+    {
+      "id": 22,
+      "body": "If you commute and have an Apple Watch, this is probably one of the better things you can add to your routine without thinking about it.\nI built Noti Trivia for exactly this kind of dead time. Two trivia questions delivered to your wrist each day as push notifications — one at noon, one at 6pm. You answer in the notification itself with tappable buttons, the whole thing takes 20 seconds, and then you're done. No app to open, no feed to scroll, nothing to commit to. Just a question, your answer, and back to whatever you were doing.\nStreak system so there's something at stake, 3 lives before your streak resets, and 14,000+ questions across science, history, geography, pop culture, sports, and more. It's completely free and doesn't require an account.\nIf you've got 40 minutes of transit time each way and nothing useful to do with your hands or eyes half of it, you might as well be getting incrementally smarter about random trivia.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Free Apple Watch trivia app built for commute dead time",
+        "Something actually useful to do on your wrist during the commute",
+        "20 seconds of trivia on your watch, twice a day, built for transit",
+        "For commuters who want something smarter than doomscrolling",
+        "Turn your dead commute time into a daily trivia habit"
+      ]
+    },
+    {
+      "id": 23,
+      "body": "You've got 30 minutes for lunch and the first five are always the same — phone out, scrolling something that doesn't matter, waiting for food or just killing time before the afternoon starts.\nI built an Apple Watch app called Noti Trivia that gives you something slightly more interesting to do with 20 seconds of that window. It sends two trivia questions a day as wrist notifications — one at noon, one at 6pm — and you answer right in the notification with tappable buttons. You never have to open the app. Answer the question, see if you got it right, and that's it. There's a streak to protect and 3 lives between you and starting over, which gives you just enough reason to actually pay attention.\n14,000+ questions across a wide range of categories. Completely free, no account needed, nothing to sign up for.\nIf you're going to stare at your watch during the lunch break anyway, it might as well ask you something.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Something better to do with your watch during the lunch break",
+        "Free Apple Watch trivia — perfect for the 30-minute lunch window",
+        "Built for the people who actually look at their watch during lunch",
+        "20 seconds of trivia on your wrist, timed perfectly for noon",
+        "A tiny brain workout for the people who eat lunch alone"
+      ]
+    },
+    {
+      "id": 24,
+      "body": "People ask me why Noti Trivia is Apple Watch only and not on iPhone. The honest answer is that the iPhone version would be a worse product and I'd rather not ship it.\nHere's the thing about trivia apps on the phone: the phone gives you too much. You can look things up. You can spend three minutes on a question. You can close it and come back. The friction of the device works against the whole premise of getting a quick question, committing to an answer, and moving on. People treat their phones like a scratchpad, not a buzzer.\nThe Apple Watch removes all of that. The screen is small, the interaction window is short by design, and the notification format forces a binary moment — you see the question, you pick an answer with your thumb, done. You can't overthink it. You can't google it. The constraint is the point.\nThe 1-hour answer window matters too. On a phone, you'd dismiss it and come back. On the watch, the window creates real urgency because the watch is always there. It's the closest thing to being put on the spot that a passive notification can create.\nI could have built an iPhone app and probably gotten more downloads. I built a watch app and got a better experience. That felt like the right call.\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Why I built Noti Trivia for Apple Watch and not iPhone",
+        "The phone version would be a worse app, so I didn't build it",
+        "Apple Watch constraints make for a better trivia experience",
+        "Why the small screen is actually the whole point",
+        "I chose fewer downloads to ship a better product — here's why"
+      ]
+    },
+    {
+      "id": 25,
+      "body": "Noti Trivia just hit 20 users. I know that's not a number anyone writes press releases about. But when you build something completely solo, on your own time, with no team and no budget, and you watch real people actually download it and use it every day — 20 feels like something.\nI built this because I wanted daily trivia on my Apple Watch and couldn't find anything that did it the way I wanted. Two questions a day, answered right in the notification, streak and lives to keep you honest, 14,000+ questions across every category I could pull together. I shipped it, put it on the App Store, and then started doing the part nobody prepares you for: trying to actually find the people it's made for.\n20 users in. The streak logs are real. People are answering questions every day. Some are getting them right, some aren't, but they're showing up.\nI'm going to keep going. Not because the numbers are impressive, but because the thing works and the people using it seem to like it. That's enough reason to keep pushing.\nIf you have an Apple Watch and want to be user 21:\nhttps://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch\nnotitrivia.online",
+      "links": {
+        "app_store": "https://apps.apple.com/us/app/noti-trivia/id6764606874?platform=watch",
+        "website": "https://notitrivia.online"
+      },
+      "titles": [
+        "Noti Trivia just hit 20 users and I'm going to keep pushing",
+        "20 users isn't a press release but it's enough to keep going",
+        "First 20 real users of something I built solo — here's where I'm at",
+        "Small milestone, real momentum — 20 users on my watch trivia app",
+        "Be user 21 on my free Apple Watch trivia app"
       ]
     }
   ]
